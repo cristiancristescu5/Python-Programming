@@ -17,7 +17,7 @@ def gcd(x):  # 1
 
 
 def count_vowels(x=''):  # 2
-    vowels = "aeiou"
+    vowels = "aAeEiIoOuU"
     result = 0
     for s in vowels:
         result += x.count(s)
@@ -127,6 +127,7 @@ def number_of_letters(x=''):  # 10
     print(f'|{x}| contains {len(x.split(" "))} words')
 
 
+gcd(3)
 count_vowels("alfabet")
 count_app("azi", "azi e bine, azi nu fac nimic, azi")
 convert("bauBauBauBauBau")

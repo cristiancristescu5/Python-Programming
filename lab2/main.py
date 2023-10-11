@@ -141,26 +141,18 @@ def ascii_list(string_list: list[string], flag, x=1):
     return result_chars
 
 
-def spectators(seats: list[list]):
-    rows = len(seats) - 1
+def spectators(seats):
+    rows = len(seats)
     cols = len(seats[0])
     pos = []
     for j in range(cols):
-        # index = rows
-        for i in range(rows, 0, -1):
+        for i in range(1, rows):
             el = seats[i][j]
-            print(el, i, j)
-            for m in range(i-1, 1, -1):
-                if seats[m][j] > el or seats[m][j] == el:
-                    if pos.count((m, j, seats[m][j])) == 0:
-                        pos.append((m, j, seats[m][j]))
-    # for i in range(rows):
-    #     for j in range(cols):
-    #         el = seats[i][j]
-    #         for m in range(i + 1, rows):
-    #             if seats[m][j] >= el and pos.count((i, j)) == 0:
-    #                 pos.append((i, j))
-    #                 break
+            for m in range(i - 1, 0, -1):
+                if seats[m][j] >= el:
+                    pos.append((i, j))
+                    break
+
     return pos
 
 
