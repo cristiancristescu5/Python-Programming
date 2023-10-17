@@ -42,7 +42,6 @@ def prime_list(x):  # 2
     for i in x:
         if is_prime(i):
             result_list.append(i)
-            print(i)
     return result_list
 
 
@@ -186,14 +185,32 @@ def sort_list_tuples(tuples: list[tuple]):
     return tuples
 
 
-# print(fibo(3))
-# print(prime_list([1, 2, 3, 4, 5, 6, 7, 12, 17, 11, 13, 14, 25, 23, 78, 31, 41, 51]))
-# print(process_lists([1, 2, 3], [1, 3, 4, 5]))
-# print(create_song(2, ["do", "re", "mi", "fa", "sol"], [1, -3, 4, 2]))
-# print(replace_diagonal([[1, 2, 3], [1, 2, 3], [1, 2, 3]]))
-# print(process_lists_var([1, 2, 3], [2, 3, 4], [4, 5, 6], [4, 1, "test"], x=1))
-# print(palindrome_tuple([121, 131, 141, 151, 161, 171, 100001]))
-# print(ascii_list(["test", "hello", "lab002"], False, 2))
-# print(spectators([[1, 2, 3, 2, 1, 1], [2, 4, 4, 3, 7, 2], [5, 5, 2, 5, 6, 4], [6, 6, 7, 6, 7, 5]]))
+def group_by_rhyme(words: list[string]):
+    words.sort(key=lambda x: x[(len(x) - 2):])
+    group = []
+    rhyme = words[0][len(words[0]) - 2:]
+    rhymes: list = [words[0]]
+    for i in range(1, len(words)):
+        if words[i][len(words[i]) - 2:] == rhyme:
+            rhymes.append(words[i])
+        else:
+            group.append(rhymes)
+            rhyme = words[i][len(words[i]) - 2:]
+            rhymes = [words[i]]
+    group.append(rhymes)
+    return group
+
+
+print(fibo(3))
+print(prime_list([1, 2, 3, 4, 5, 6, 7, 12, 17, 11, 13, 14, 25, 23, 78, 31, 41, 51]))
+print(process_lists([1, 2, 3], [1, 3, 4, 5]))
+print(create_song(2, ["do", "re", "mi", "fa", "sol"], [1, -3, 4, 2]))
+print(replace_diagonal([[1, 2, 3], [1, 2, 3], [1, 2, 3]]))
+print(process_lists_var([1, 2, 3], [2, 3, 4], [4, 5, 6], [4, 1, "test"], x=1))
+print(palindrome_tuple([121, 131, 141, 151, 161, 171, 100001]))
+print(ascii_list(["test", "hello", "lab002"], False, 2))
+print(spectators([[1, 2, 3, 2, 1, 1], [2, 4, 4, 3, 7, 2], [5, 5, 2, 5, 6, 4], [6, 6, 7, 6, 7, 5]]))
 print(lists_to_tuples([1, 2, 3, 4, 9, 10], [5, 6, 7, 8], ["a", "b", "c"]))
 print(sort_list_tuples([("abc", "bcd"), ("abc", "zza")]))
+print(group_by_rhyme(["ana", "banana", "carte", "arme", "parte"]))
+
