@@ -26,13 +26,13 @@ def count_vowels(x=''):  # 2
 
 
 def count_app(x='', y=''):  # 3
-    print(f"{x} appears in {y}, {y.count(x)} times")
+    print(f"{x} appears in |{y}|, {y.count(x)} times")
     return y.count(x)
 
 
 def convert(x=''):  # 4
-    result = ''
-    for c in x:
+    result = x[0].lower()
+    for c in x[1:]:
         if c.islower():
             result += c
         else:
@@ -117,13 +117,14 @@ def most_common_letter(x=''):  # 9
     c = ' '
     m = 0
     for i in x:
-        if m < x.count(i) and 'a' < i < 'z':
+        if m < x.count(i) and ('a' <= i <= 'z' or 'A' <= i <= 'Z'):
             c = i
             m = x.count(i)
-    print(f"most common letter is {c} with {m} occurrences")
+    print(f"most common letter in |{x}| is {c} with {m} occurrences")
+    return c, m
 
 
-def number_of_letters(x=''):  # 10
+def number_of_words(x=''):  # 10
     print(f'|{x}| contains {len(x.split(" "))} words')
 
 
@@ -140,5 +141,5 @@ print_spiral([
 is_palindrome(121)
 find_number("ws12defrgre123456789wedfrgre567")
 count_bits(15)
-most_common_letter("an apple is not a tomato")
-number_of_letters("I have Python exam")
+print(most_common_letter("an apple is not a tomato"))
+number_of_words("I have Python exam")
