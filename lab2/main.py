@@ -175,6 +175,13 @@ def lists_to_tuples(*lists: list):  # 10
 
 
 def sort_list_tuples(tuples: list[tuple]):
+    for l in tuples:
+        if len(l) < 2:
+            print("invalid tuple")
+            return
+        if len(l[1]) < 3:
+            print("invalid tuple")
+            return
     tuples.sort(key=lambda i: i[1][2])
     return tuples
 
