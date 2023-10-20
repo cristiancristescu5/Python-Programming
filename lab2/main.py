@@ -76,8 +76,8 @@ def create_song(i, notes: list, moves: list):  # 4
     position = i
     for j in moves:
         position += j
-        while position > len(notes) - 1:
-            position = position - len(notes)
+        if position > len(notes) - 1 or position < 0:
+            position = position % (len(notes))
         song.append(notes[position])
     return song
 
@@ -90,17 +90,13 @@ def replace_diagonal(matrix):  # 5
     return matrix
 
 
-def process_lists_var(*lists, x):
+def process_lists_vars(*lists: list, x):
     result_list = []
     el = []
-    l: list
     for l in lists:
-        result_list = list(set(result_list) | set(l))
+        result_list.extend(l)
     for i in result_list:
-        count = 0
-        for h in lists:
-            count += h.count(i)
-        if count == x:
+        if result_list.count(i) == x and el.count(i) == 0:
             el.append(i)
     return el
 
@@ -148,7 +144,7 @@ def spectators(seats):
         for i in range(1, rows):
             el = seats[i][j]
             for m in range(i - 1, 0, -1):
-                if seats[m][j] >= el:
+                if seats[m][j] >= el and pos.count((i, j)) == 0:
                     pos.append((i, j))
                     break
 
@@ -201,16 +197,15 @@ def group_by_rhyme(words: list[string]):
     return group
 
 
-print(fibo(3))
-print(prime_list([1, 2, 3, 4, 5, 6, 7, 12, 17, 11, 13, 14, 25, 23, 78, 31, 41, 51]))
+# print(fibo(3))
+# print(prime_list([1, 2, 3, 4, 5, 6, 7, 12, 17, 11, 13, 14, 25, 23, 78, 31, 41, 51]))
 print(process_lists([1, 2, 3], [1, 3, 4, 5]))
-print(create_song(2, ["do", "re", "mi", "fa", "sol"], [1, -3, 4, 2]))
+# print(create_song(2, ["do", "re", "mi", "fa", "sol"], [1, -3, 4, 2]))
 print(replace_diagonal([[1, 2, 3], [1, 2, 3], [1, 2, 3]]))
-print(process_lists_var([1, 2, 3], [2, 3, 4], [4, 5, 6], [4, 1, "test"], x=1))
+print(process_lists_vars([1, 2, 3], [2, 3, 4], [4, 5, 6], [4, 1, "test"], x=2))
 print(palindrome_tuple([121, 131, 141, 151, 161, 171, 100001]))
 print(ascii_list(["test", "hello", "lab002"], False, 2))
 print(spectators([[1, 2, 3, 2, 1, 1], [2, 4, 4, 3, 7, 2], [5, 5, 2, 5, 6, 4], [6, 6, 7, 6, 7, 5]]))
 print(lists_to_tuples([1, 2, 3, 4, 9, 10], [5, 6, 7, 8], ["a", "b", "c"]))
 print(sort_list_tuples([("abc", "bcd"), ("abc", "zza")]))
 print(group_by_rhyme(["ana", "banana", "carte", "arme", "parte"]))
-
