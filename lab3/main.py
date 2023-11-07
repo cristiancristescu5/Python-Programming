@@ -48,7 +48,8 @@ def validate_dict(rules: set[tuple], d: dict):  # 5
             return False
 
         if not (str(d[key]).count(dict_rules[key][1]) != 0) \
-                and not (str(d[key]).endswith(dict_rules[key][0])):
+                and not (str(d[key]).endswith(dict_rules[key][0]))\
+                and not (str(d[key]).startswith(dict_rules[key][2])):
             return False
     return True
 
@@ -85,20 +86,20 @@ def loop(d: dict):  # 10
 
 
 def pos_args_keys(*args, **pos):  # 11
-    count = 0;
+    count = 0
     for i in args:
         if i in pos.values():
             count += 1
     return count
 
 
-print(pos_args_keys(1, 2, 3, 4, x=1, y=2, z=3, w=5))
-print(loop({'start': 'a', 'b': 'a', 'a': '6', '6': 'z', 'x': '2', 'z': '2', '2': '2', 'y': 'start'}))
-print(sets_to_dict({1, 2}, {2, 3}))
-print(validate_dict({("key1", "", "inside", ""), ("key2", "start", "middle", "winter")},
-                    {"key1": "come inside, it's too cold out", "key2": "start this is middle not valid winter"}))
-print(process_lists([1, 2, 3, 4, 5, 6], [2, 3, 4, 7, 8, 9, 10]))
-print(prop_to_dict("Ana has apples"))
-print(compare_dicts({'a': 1, 'b': [1, 2, 3], 'c': ['a', 5, 6]}, {'a': 1, 'c': ['a', 5, 6], 'b': [1, 2, 3]}))
-print(build_xml_element("a", "Hello there", href=" http://python.org ", _class=" my-link ", id=" someid "))
-print(list_set([1, 2, 2, 3, 4, 4, 5, 6, 7, 7, 7, 7, 8, 9]))
+# print(pos_args_keys(1, 2, 3, 4, x=1, y=2, z=3, w=5))
+# print(loop({'start': 'a', 'b': 'a', 'a': '6', '6': 'z', 'x': '2', 'z': '2', '2': '2', 'y': 'start'}))
+# print(sets_to_dict({1, 2}, {2, 3}))
+# print(validate_dict({("key1", "", "inside", ""), ("key2", "start", "middle", "winter")},
+#                     {"key1": "come inside, it's too cold out", "key2": "start this is middle not valid winter"}))
+# print(process_lists([1, 2, 3, 4, 5, 6], [2, 3, 4, 7, 8, 9, 10]))
+# print(prop_to_dict("Ana has apples"))
+print(compare_dicts({'a': 1, 'b': [1, 2, 3], 'c': ['a', 5, 6], 'd' : {'a1' : 'a2'}}, {'a': 1, 'b': [1, 2, 3], 'c': ['a', 5, 6], 'd' : {'a1' : 'a2'}}))
+# print(build_xml_element("a", "Hello there", href=" http://python.org ", _class=" my-link ", id=" someid "))
+# print(list_set([1, 2, 2, 3, 4, 4, 5, 6, 7, 7, 7, 7, 8, 9]))
