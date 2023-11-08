@@ -17,7 +17,6 @@ class Stack:
 
         el = self._stack.pop(self._index)
         self._index -= 1
-        # self._stack.remove(el)
         return el
 
     def peek(self):

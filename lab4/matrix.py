@@ -2,7 +2,7 @@ import numpy as np
 
 
 class Matrix:
-    def __init__(self, rows, cols, matrix=None):
+    def __init__(self, rows, cols, matrix = None):
         if matrix is None:
             self.rows = rows
             self.cols = cols
