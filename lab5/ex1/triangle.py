@@ -1,4 +1,4 @@
-from shape import Shape
+from ex1.shape import Shape
 import math
 
 
