@@ -33,9 +33,6 @@ class Motorcycle(Vehicle):
         self.vtype = vtype
         self.towing_capacity = towing_capacity
 
-    def compute_towing_cap(self):
-        return self.towing_capacity
-
     def compute_mileage(self):
         return (2023 - self.year) * 8000
 

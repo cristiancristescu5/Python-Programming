@@ -44,6 +44,6 @@ class CheckingAccount(Account):
         self.interest_rate = interest_rate
 
     def calculate_interest(self, period=1):
-        interest = self.money * self.interest_rate * period
+        interest = self.money / self.interest_rate * period
         self.money += interest
         print(f"The interest for {period} years is: {interest}. Your new balance is: {self.money}")
