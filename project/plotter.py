@@ -1,13 +1,16 @@
 import folium
 import webbrowser
+from coordinate import Coordinate
 
 
 class Plotter:
     @staticmethod
-    def plot(coordinates):
-        m = folium.Map(location=[47.60332439417556, 27.25886081239678], zoom_start=2)
+    def plot(coordinates: list[Coordinate]):
+        m = folium.Map(location=[39.00, 34.00], zoom_start=2)
         markers = []
         for c in coordinates:
-            folium.Marker([c[0], c[1]], popup=c[2]).add_to(m)
+            folium.Marker([c.get_x(), c.get_y()], popup=c.get_label()).add_to(m)
         m.save('map.html')
-        webbrowser.open('file://C://Users//crist//OneDrive//Desktop//piton//project//map.html')
+        url = 'http://localhost:63342/project/project/map.html'
+        webbrowser.open(url)
+        print(f"Map: {url}")

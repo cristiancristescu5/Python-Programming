@@ -5,9 +5,18 @@ from plotter import Plotter
 
 flickr = Flickr_API()
 
-hashtag = "nature"
+while 1:
+    confirm = input("Do you want to continue? yes/no:")
+    if confirm == 'no':
+        break
+    hashtag = input("Enter your hashtags:")
+    num_posts = 10  # default
 
-coordinates = Parser.parse(hashtag, flickr)
+    try:
+        num_posts = int(input("Enter the number of posts:"))
+    except Exception as e:
+        print(e)
 
-Plotter.plot(coordinates)
+    coordinates = Parser.parse(hashtag, flickr, num_posts)
+    Plotter.plot(coordinates)
 
