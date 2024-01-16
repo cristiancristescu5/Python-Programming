@@ -6,6 +6,7 @@ from coordinate import Coordinate
 
 class Parser:
     """This is a static class is used for fetching data from the Flickr API"""
+
     @staticmethod
     def parse(hashtag, flickr, num_posts):
         """
@@ -16,7 +17,7 @@ class Parser:
         :return: A list containing the coordinates of the posts.
         """
         locations = []
-        photos = flickr.get_api().photos.search(tags=hashtag, per_page=num_posts, extras='url_c'
+        photos = flickr.get_api().photos.search(tags=hashtag, per_page=num_posts, extras='url_c', has_geo=True
                                                 , sort='date-posted-desc')
         for p in photos['photos']['photo']:
             print('Title: ', p['title'])
