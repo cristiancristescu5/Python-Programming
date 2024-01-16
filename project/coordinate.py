@@ -1,4 +1,5 @@
 class Coordinate:
+    """This class is used to represent the coordinates of a photo."""
     def __init__(self, x, y, label):
         self.__x = x
         self.__y = y
